@@ -33,19 +33,65 @@
   <div class="section" id="module-RSI">
 <span id="rsi-module"></span><h1>RSI module<a class="headerlink" href="#module-RSI" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
+<dt id="RSI.appWindow">
+<em class="property">class </em><code class="descclassname">RSI.</code><code class="descname">appWindow</code><a class="headerlink" href="#RSI.appWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tkinter.Tk</span></code></p>
+<dl class="method">
+<dt id="RSI.appWindow.createWidgets">
+<code class="descname">createWidgets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RSI.appWindow.createWidgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RSI.appWindow.showFrame">
+<code class="descname">showFrame</code><span class="sig-paren">(</span><em>frameClass</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.appWindow.showFrame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="RSI.baseFrame">
+<em class="property">class </em><code class="descclassname">RSI.</code><code class="descname">baseFrame</code><span class="sig-paren">(</span><em>master</em>, <em>controller</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.baseFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tkinter.Frame</span></code></p>
+<dl class="method">
+<dt id="RSI.baseFrame.createWidgets">
+<code class="descname">createWidgets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RSI.baseFrame.createWidgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the widgets for the frame.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="RSI.gameWindow">
-<em class="property">class </em><code class="descclassname">RSI.</code><code class="descname">gameWindow</code><a class="headerlink" href="#RSI.gameWindow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<em class="property">class </em><code class="descclassname">RSI.</code><code class="descname">gameWindow</code><span class="sig-paren">(</span><em>master</em>, <em>controller</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.gameWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tkinter.Frame</span></code></p>
 <dl class="docutils">
 <dt>TODO:   implement game. Mechanics involve moving the cursor to a</dt>
 <dd>sequence of circles that appear on the screen. Points will
 be assigned based on cursor speed, and proximity to circle
 centre. Will be time based.</dd>
 </dl>
-<p>TODO:   implement circle graphics</p>
-<p>TODO:   implement cursor tracker method</p>
-<p>TODO:   implement timer</p>
-<p>TODO:   implement scoring system</p>
+<p>TODO:   implement keybinds to exit game mode</p>
+<p>TODO:   implement sequential drawing of shrinking circles on canvas</p>
+<dl class="method">
+<dt id="RSI.gameWindow.createTargets">
+<code class="descname">createTargets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RSI.gameWindow.createTargets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RSI.gameWindow.createWidgets">
+<code class="descname">createWidgets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RSI.gameWindow.createWidgets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RSI.gameWindow.end_fullscreen">
+<code class="descname">end_fullscreen</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.gameWindow.end_fullscreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RSI.gameWindow.toggle_fullscreen">
+<code class="descname">toggle_fullscreen</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.gameWindow.toggle_fullscreen" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="function">
@@ -56,14 +102,31 @@ centre. Will be time based.</dd>
 
 <dl class="class">
 <dt id="RSI.menuWindow">
-<em class="property">class </em><code class="descclassname">RSI.</code><code class="descname">menuWindow</code><a class="headerlink" href="#RSI.menuWindow" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">RSI.</code><code class="descname">menuWindow</code><span class="sig-paren">(</span><em>master</em>, <em>controller</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.menuWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tkinter.Frame</span></code></p>
+<dl class="method">
+<dt id="RSI.menuWindow.createWidgets">
+<code class="descname">createWidgets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#RSI.menuWindow.createWidgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create the widgets for the frame.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="RSI.motionCapture">
+<em class="property">class </em><code class="descclassname">RSI.</code><code class="descname">motionCapture</code><span class="sig-paren">(</span><em>master</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.motionCapture" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="docutils">
-<dt>TODO:   create game main menu, including:</dt>
-<dd>-just a single game mode for row
--high scores</dd>
-</dl>
-<p>TODO:   make it pretty</p>
+<p>COMPLETE:       send positional data somewhere. Call from somewhere?</p>
+<dl class="method">
+<dt id="RSI.motionCapture.motion">
+<code class="descname">motion</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.motionCapture.motion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="RSI.motionCapture.printCoords">
+<code class="descname">printCoords</code><span class="sig-paren">(</span><em>event=None</em><span class="sig-paren">)</span><a class="headerlink" href="#RSI.motionCapture.printCoords" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 </div>
