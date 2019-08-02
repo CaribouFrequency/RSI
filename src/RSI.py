@@ -1,4 +1,5 @@
 import tkinter as tk
+import threading
 
 def main():
 	"""
@@ -14,6 +15,8 @@ class appWindow(tk.Tk):
 	def __init__(self):
 		tk.Tk.__init__(self)
 		self.createWidgets()
+		self.timer = threading.Timer(0.5, self.animator)
+		self.timer.start()
 
 	def createWidgets(self):
 		# frame container
@@ -34,7 +37,17 @@ class appWindow(tk.Tk):
 		self.frames[frameClass].tkraise()
 		self.frames[frameClass].focus_set()
 
+	def animator(self):
+		self.frames[gameWindow].animateTargets()
+		self.timer = threading.Timer(0.5, self.animator)
+		self.timer.start()
+
+
 class baseFrame(tk.Frame):
+	"""
+	Master: container frame (tk.Frame)
+	Controller: appWindow (tk.Tk)
+	"""
 
 	def __init__(self, master, controller):
 		tk.Frame.__init__(self, master)
@@ -113,6 +126,7 @@ class gameWindow(tk.Frame):
 		controller.attributes("-fullscreen", False)
 
 
+
 	def createWidgets(self):
 		controller = self.controller
 		label = tk.Label(self, text="game window")
@@ -126,23 +140,46 @@ class gameWindow(tk.Frame):
 		button1.pack()
 		button2.pack()
 
-		
+		# target creation and animation sholud probably
+		# be in a class of its own. Do later.
 
 
 	def createTargets(self):
 		controller = self.controller
+		master = self.master
 		m = motionCapture(controller)
 		controller.geometry("600x400")
-		canvas = tk.Canvas(controller, width=600, height=400)
-		canvas.pack()
-		print(isinstance(controller, tk.Tk))
+		self.canvas = tk.Canvas(self, width=600, height=400)
+		self.canvas.pack(fill="both", expand="True")
+
+		self.frameCounter = 0
+		self.centre = [200, 200]
+		self.radius = 50
+
+
+		self.setBounds()
+		topLeft = self.topLeft
+		bottomRight = self.bottomRight
+		self.target_1 = self.canvas.create_oval(topLeft[0],topLeft[1],bottomRight[0],bottomRight[1], fill="blue")
+
+
+	def animateTargets(self):
+		self.radius -= 1
+		self.setBounds()
+		a = self.topLeft[0]
+		b = self.topLeft[1]
+		c = self.bottomRight[0]
+		d = self.bottomRight[1]
+		self.canvas.coords(self.target_1, a, b, c, d)
+		self.master.update()
+
+
+	def setBounds(self):
+
+		self.topLeft = [self.centre[0] - self.radius, self.centre[1] - self.radius]
+		self.bottomRight = [self.centre[0] + self.radius, self.centre[1] + self.radius]
+
 		"""
-		self.m = motionCapture(self.tk)	#Created a mocap object within the game window.
-		self.tk.attributes('-zoomed', False)  # This just maximizes it so we can see the window. It's nothing to do with fullscreen.
-		self.tk.attributes('-fullscreen','false')
-		self.frame = Frame(self.tk, width=400, height=400)
-		self.frame.pack()
-		self.state = True
 		self.tk.bind("<F11>", self.toggle_fullscreen)
 		self.tk.bind("<Escape>", self.end_fullscreen)
 		self.tk.bind("<Button-1>", self.m.printCoords)
